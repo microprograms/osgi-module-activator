@@ -15,7 +15,7 @@ public class ModuleActivator implements BundleActivator {
 
 	@Override
 	public void start(BundleContext context) throws Exception {
-		log.info("{} starting ...", getClass().getName());
+		log.info("starting module {}", getClass().getName());
 		this.context = context;
 		onStart();
 	}
@@ -32,12 +32,14 @@ public class ModuleActivator implements BundleActivator {
 	}
 
 	protected void registerApi(Object api) {
-		context.registerService(api.getClass().getName(), api, null);
+		String apiClassName = api.getClass().getName();
+		log.info("register api {}", apiClassName);
+		context.registerService(apiClassName, api, null);
 	}
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		log.info("{} stopping ...", getClass().getName());
+		log.info("stopping module {}", getClass().getName());
 		onStop();
 	}
 
