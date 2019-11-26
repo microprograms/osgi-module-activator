@@ -17,6 +17,10 @@ public class ModuleActivator implements BundleActivator {
 	public void start(BundleContext context) throws Exception {
 		log.info("{} starting ...", getClass().getName());
 		this.context = context;
+		onStart();
+	}
+
+	protected void onStart() throws Exception {
 	}
 
 	protected Logger getLog() {
@@ -34,5 +38,9 @@ public class ModuleActivator implements BundleActivator {
 	@Override
 	public void stop(BundleContext context) throws Exception {
 		log.info("{} stopping ...", getClass().getName());
+		onStop();
+	}
+
+	protected void onStop() throws Exception {
 	}
 }
